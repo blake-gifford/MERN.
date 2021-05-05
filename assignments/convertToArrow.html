@@ -20,44 +20,28 @@
     <p>
         We just like random interactivity in the site, including a fun effect if you hover over <span id="hover-this">        <b>this.</b></span>
     </p>
-    <p onmouseover="mouseOverFunction(this)">
-        <span id="click">Another task: This should be another feature. 
-        I want to click anywhere in this paragraph tag and I want to be able to change the background color to whatever is in this input: <input type="text"/>.
-    </span>
+    <p id = "click">
+        Another task: This should be another feature. 
+        I want to click anywhere in this paragraph tag and I want to be able to change the background color to whatever is in this input: <input id = "choose" type="text"/>.
     </p>
     <script>
-        document.getElementById("button").onclick = () => {
-            setBackgroundColorById("paragraph", "blue");
-        }
-        document.getElementById("alert").onclick = () =>{
-            alert(document.getElementById("popup-input").value);
-        }
-        document.getElementById("hover-this").onmouseover = () =>{
-            setBackgroundColorById("body", "red");
-        }
-        document.getElementById("hover-this").onmouseout = () =>{
-            setBackgroundColorById("body", "white");
-        }
-        const getValueFromId = (id) => {
-            return document.getElementById(id).value;
-        }
-        const setBackgroundColorById = (id, color) => {
-            document.getElementById(id).style = "background-color: " + color;
-        }
-        const mouseOverFunction = (el) => {
-            el.style = "background-color: {color}";
-        }
+        document.getElementById("button").onclick = () => setBackgroundColorById("paragraph", "blue");
         
-        // const inputBackgroundFunciton = () => {
-        //     document.getElementById("color").value;
-        //     document.bgColor = color;
-        // }
-        // document.getElementById("submitColor").addEventListener("click", changeBackground, true);
+        document.getElementById("alert").onclick = () => alert(document.getElementById("popup-input").value);
+        
+        document.getElementById("hover-this").onmouseover = () => setBackgroundColorById("body", "red");
+        
+        document.getElementById("hover-this").onmouseout = () => setBackgroundColorById("body", "white");
+        
 
+        document.getElementById("click").onclick = () => setBackgroundColorById("click", document.getElementById("choose").value);
 
-        document.getElementById('click').onclick = () => {
-            setBackgroundColorById('paragraph', color);
-        }
+        const getValueFromId = (id) => document.getElementById(id).value;
+
+        const setBackgroundColorById = (id, color) => document.getElementById(id).style = "background-color: " + color;
+        
+        const mouseOverFunction = (el) => el.style = "background-color: black";
+        
     </script>
 </body>
 </html>
