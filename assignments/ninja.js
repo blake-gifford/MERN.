@@ -39,13 +39,13 @@ class Sensei extends Ninja {
 }
 
 let blake = new Ninja('Blake', 100);
-let senseiBlake = new Sensei('Blake', )
-console.log(blake);
+let senseiBlake = new Sensei('Blake');
+// console.log(blake);
 
-blake.sayName();
+// blake.sayName();
 
-blake.drinkSake();
+// blake.drinkSake();
 
-senseiBlake.speakWisdom();
+// senseiBlake.speakWisdom();
 
-senseiBlake.drinkSake();
+// senseiBlake.drinkSake();
