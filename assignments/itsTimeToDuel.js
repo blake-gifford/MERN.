@@ -11,6 +11,14 @@ class UnitCard {
         console.log('Power: ' + this.power);
         console.log('Resilience: ' + this.resilience);
     }
+    attack(target){
+        if( target instanceof UnitCard ) {
+            // implement card text here
+            target.resilience -= this.power
+        } else {
+            throw new Error( "Target must be a unit!" );
+        }
+    }
 }
 
 class EffectCard extends UnitCard {
@@ -20,29 +28,18 @@ class EffectCard extends UnitCard {
         this.stat = stat;
         this.magnitude = magnitude;
     }
-    hardAlgorithm(){
-        this.name = 'Hard Algorithm'
-        this.cost = 2;
-        this.text = "increase target's resilience by 3";
-        this.stat = this.resilience;
-        this.magnitude += 3;
-        console.log(this.magnitude);
-    }
-    unhandledPromiseRejection(){
-        this.name = 'Unhandled Promise Rejection'
-        this.cost = 1;
-        this.text = "reduce target's resilience by 2";
-        this.stat = this.resilience;
-        this.magnitude -= 2;
-        console.log(this.magnitude);
-    }
-    pairProgramming(){
-        this.name = 'Pair Programming'
-        this.cost = 3;
-        this.text = "increase target's resilience by 3";
-        this.stat = this.power;
-        this.magnitude += 2;
-        console.log(this.magnitude);
+    play(target){
+        if( target instanceof UnitCard){
+            if (this.stat == 'resilience'){
+                target.resilience += this.magnitude;
+            }
+            if (this.stat == 'power'){
+                target.power += this.magnitude;
+            }
+        }
+        else{
+            throw new Error( "Target must be a unit!" );
+        }
     }
 }
 
@@ -50,6 +47,11 @@ class EffectCard extends UnitCard {
 
 let myRedBeltNinja = new UnitCard('Red Belt Ninja', 3, 3, 4);
 let myBlackBeltNinja = new UnitCard('Black Belt Ninja', 4, 5, 4);
+
+let hardAlgorithm = new EffectCard('Hard Algo', 2, "increase target's resilience by 3", 'resilience', 3);
+let unhandledPromiseRejection = new EffectCard('Unhandled Promise Rejection ', 1, "reduce target's resilience by 2", 'resilience', -2);
+let pairProgramming = new EffectCard('Pair Programming ', 3, "increase target's resilience by 3", 'power', 2);
+
 
 // let myEffectCard = new EffectCard()
 
@@ -70,13 +72,15 @@ console.log("*******************************");
 myBlackBeltNinja.showStats();
 
 
+console.log(hardAlgorithm);
+console.log(unhandledPromiseRejection);
+console.log(pairProgramming);
 
-myRedBeltNinja.hardAlgorithm();
-myRedBeltNinja.unhandledPromiseRejection();
-myRedBeltNinja.pairProgramming();
+console.log('this is before the attack', myBlackBeltNinja);
+myRedBeltNinja.attack(myBlackBeltNinja);
+console.log('this is after the attack', myBlackBeltNinja);
 
-console.log("*******************************");
 
-// myBlackBeltNinja.hardAlgorithm();
-// myBlackBeltNinja.unhandledPromiseRejection();
-// myBlackBeltNinja.pairProgramming();
+hardAlgorithm.play(myBlackBeltNinja);
+console.log(myBlackBeltNinja);
+hardAlgorithm.play(unhandledPromiseRejection);
