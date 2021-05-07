@@ -19,19 +19,28 @@
     https://stackoverflow.com/questions/164163/quicksort-choosing-the-pivot
 */
 function partition(nums = [], left = 0, right = nums.length-1) {
-    let pivot = Math.floor(nums.length/2);
-    let leftArr = [];
-    let rightArr = [];
+    let midIdx = Math.floor(nums.length/2);
+    const pivot = nums[midIdx];
 
-    if(pivot <= 1) return 1;
-    while( i < nums.length){
-        if (nums[i] < nums[pivot]){
-            nums[i].push(leftArr);
-        }else{
-            nums[i].push(rightArr);
+    let iLeft = left, iRight = right;
+
+    while(iLeft <= iRight){
+        while(nums[iLeft] < pivot){
+            iLeft++;
+        }
+
+        while(nums[iRight] >= pivot){
+            iRight--;
+        }
+        if(iLeft <= iRight){
+            [nums[iLeft], nums[iRight]] = [nums[iRight], nums[iLeft]];
+            iLeft++;
+            iRight--;
         }
     }
-    return leftArr, rightArr
+    [nums[midIdx], nums[iLeft]] = [nums[iLeft], nums[midIdx]];
+
+    return iLeft;
 }
 const nums1 = [6,3,5,7,8,4];
 
