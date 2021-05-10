@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const SomeForm = () => {
-
     const [firstName, setFirstName] = useState("");
     const [firstNameError, setFirstNameError] = useState[""];
     const [lastName, setLastName] = useState("");
@@ -9,6 +8,9 @@ const SomeForm = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState[""];
     const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const [passwordError, setPasswordError] = useState[""];
+    const [confirmPasswordError, setConfirmPasswordError] = useState[""];
     
 
     const submitHandler = e => {
@@ -37,6 +39,20 @@ const SomeForm = () => {
         }
     }
 
+    const handlePassword = e => {
+        setPasswordError(e.target.value);
+        if(e.target.value.length < 1){
+            setPasswordError("Password Required");
+        }
+    }
+
+    const handleConfirmPassword = e => {
+        setConfirmPasswordError(e.target.value);
+        if(e.target.value.length < 1){
+            setConfirmPasswordError("Confirm Password Required");
+        }
+    }
+
     return (
         <>
             {
@@ -50,7 +66,7 @@ const SomeForm = () => {
                         <input type="text" name="firstName" onChange={ e => setFirstName(e.target.value) } />
                         {
                             firstNameError ?
-                            <p> { handleFirstName }</p> 
+                            <p style={{color:'red'}}> { handleFirstName }</p> 
                             :
                             ''
                         }
@@ -60,7 +76,7 @@ const SomeForm = () => {
                         <input type="text" name="lastName" onChange={ e => setLastName(e.target.value) } />
                         {
                             lastNameError ?
-                            <p> { handleLastName }</p> 
+                            <p style={{color:'red'}}> { handleLastName }</p> 
                             :
                             ''
                         }
@@ -70,7 +86,7 @@ const SomeForm = () => {
                         <input type="text" name="email" onChange={ e => setEmail(e.target.value) } />
                         {
                             emailError ?
-                            <p> { handleEmail }</p> 
+                            <p style={{color:'red'}}> { handleEmail }</p> 
                             :
                             ''
                         }
@@ -78,12 +94,22 @@ const SomeForm = () => {
                     <div>
                         <label htmlFor="password">Password: </label>
                         <input type="password" name="password" />
-                        {/* onChange={ e => setPassword(e.target.value) } */}
+                        {
+                            passwordError ?
+                            <p style={{color:'red'}}> { handlePassword }</p> 
+                            :
+                            ''
+                        }
                     </div>
                     <div>
                         <label htmlFor="confirmPassword">Confirm Password: </label>
                         <input type="password" name="confirmPassword" />
-                        {/* onChange={ e => setConfirmPassword(e.target.value) } */}
+                        {
+                            confirmPasswordError ?
+                            <p style={{color:'red'}}> { handleConfirmPassword }</p> 
+                            :
+                            ''
+                        }
                     </div>
                     <div>
                         <input type="submit" value="Submit" />
