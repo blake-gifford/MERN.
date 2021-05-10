@@ -2,15 +2,23 @@ import React, { useState } from 'react'
 
 const SomeForm = () => {
     const [firstName, setFirstName] = useState("");
-    const [firstNameError, setFirstNameError] = useState[""];
+    const [firstNameError, setFirstNameError] = useState("");
     const [lastName, setLastName] = useState("");
-    const [lastNameError, setLastNameError] = useState[""];
+    const [lastNameError, setLastNameError] = useState("");
     const [email, setEmail] = useState("");
-    const [emailError, setEmailError] = useState[""];
+    const [emailError, setEmailError] = useState("");
     const [formSubmitted, setFormSubmitted] = useState(false);
 
-    const [passwordError, setPasswordError] = useState[""];
-    const [confirmPasswordError, setConfirmPasswordError] = useState[""];
+    const [passwordError, setPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+    // const [inputs, setInputs] = useState({
+    //     firstName: "",
+    //     lastName: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPassword: "",
+    // });
     
 
     const submitHandler = e => {
@@ -19,40 +27,56 @@ const SomeForm = () => {
     }
 
     const handleFirstName = e => {
-        setFirstNameError(e.target.value);
-        if(e.target.value.length < 1){
+        setFirstName(e.target.value);
+        if(e.target.value.length < 2){
             setFirstNameError("First Name Required");
+        }else{
+            setFirstNameError("")
         }
+
     }
 
     const handleLastName = e => {
-        setLastNameError(e.target.value);
-        if(e.target.value.length < 1){
+        setLastName(e.target.value);
+        if(e.target.value.length < 2){
             setLastNameError("Last Name Required");
+        }else{
+            setFirstNameError("")
         }
     }
 
     const handleEmail = e => {
-        setEmailError(e.target.value);
-        if(e.target.value.length < 1){
+        setEmail(e.target.value);
+        if(e.target.value.length < 2){
             setEmailError("Email Required");
+        }else{
+            setFirstNameError("")
         }
     }
 
     const handlePassword = e => {
-        setPasswordError(e.target.value);
-        if(e.target.value.length < 1){
+        // setPassword(e.target.value);
+        if(e.target.value.length < 5){
             setPasswordError("Password Required");
+        }else{
+            setFirstNameError("")
         }
     }
 
     const handleConfirmPassword = e => {
-        setConfirmPasswordError(e.target.value);
-        if(e.target.value.length < 1){
+        // setConfirmPassword(e.target.value);
+        if(e.target.value.length < 5){
             setConfirmPasswordError("Confirm Password Required");
+        }else{
+            setFirstNameError("")
         }
     }
-
+    // const handleInput = e => {
+    //     setInputs({
+    //         ...inputs, 
+    //         [e.target.name]: e.target.value,
+    //     })
+    // }
     return (
         <>
             {
@@ -63,30 +87,30 @@ const SomeForm = () => {
                 <form onSubmit={ submitHandler }>
                     <div>
                         <label htmlFor="firstName">First Name: </label>
-                        <input type="text" name="firstName" onChange={ e => setFirstName(e.target.value) } />
+                        <input type="text" name="firstName" onChange={ handleFirstName } />
                         {
                             firstNameError ?
-                            <p style={{color:'red'}}> { handleFirstName }</p> 
+                            <p style={{color:'red'}}> { firstNameError }</p> 
                             :
                             ''
                         }
                     </div>
                     <div>
                         <label htmlFor="lastName">Last Name: </label>
-                        <input type="text" name="lastName" onChange={ e => setLastName(e.target.value) } />
+                        <input type="text" name="lastName" onChange={ handleLastName } />
                         {
                             lastNameError ?
-                            <p style={{color:'red'}}> { handleLastName }</p> 
+                            <p style={{color:'red'}}> { lastNameError }</p> 
                             :
                             ''
                         }
                     </div>
                     <div>
                         <label htmlFor="email">Email: </label>
-                        <input type="text" name="email" onChange={ e => setEmail(e.target.value) } />
+                        <input type="text" name="email" onChange={ handleEmail } />
                         {
                             emailError ?
-                            <p style={{color:'red'}}> { handleEmail }</p> 
+                            <p style={{color:'red'}}> { emailError }</p> 
                             :
                             ''
                         }

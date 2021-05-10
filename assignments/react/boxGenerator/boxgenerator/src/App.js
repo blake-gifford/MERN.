@@ -1,12 +1,10 @@
-
-import SomeForm from './components/someForm';
+import component from './components/component';
 import './App.css';
-
 
 function App() {
   return (
     <div className="App">
-      <SomeForm />
+      
     </div>
   );
 }
