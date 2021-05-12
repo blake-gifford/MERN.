@@ -21,16 +21,15 @@ const matrix = [
 ]
 
 function diagonalDifference(sqrMatrix) {
-    let arr = [];
-    let rows = matrix.length;
-    for ( let i = 0; i < rows; i++){
-        arr[i] = [];
-        for(let j = 0; j < rows; j++){
-
-        }
+    let d1 = 0;
+    let d2 = 0;
+    for(let i = 0, j =  sqrMatrix.length-1; i < matrix.length; i++, j--){
+        d1 += matrix[i][i];
+        d2 += matrix[i][j];
     }
+    return Math.abs(b1 - d2);
 }
-diagonalDifference()
+diagonalDifference(sqrMatrix)
 
 /* 
     Union Sorted Arrays
@@ -47,5 +46,28 @@ diagonalDifference()
     orderedMultiSetUnion(nums1, nums2) should return [1,2,2,2,6,6,7]
 */
 function orderedMultiSetUnion(sortedA, sortedB){
+    const union = [];
 
+    while(i < sortedA.length){
+        while(j < sortedB.length){
+            if (sortedA[iA] === sortedB[iB]){
+                union.push(sortedA[iA]);
+                i++;
+            }else if(sortedA[i] > sortedB[j]){
+                newArr.push(sortedA[i]);
+                j++;
+            }else {
+                newArr.push(sortedA[i]);
+                i++;
+                j++;
+            }
+            break;
+        }
+    }
+    return newArr;
 }
+
+const nums1 = [1,2,2,2,7];
+const nums2 = [2,2,6,6,7];
+
+console.log(orderedMultiSetUnion(nums1, nums2));
