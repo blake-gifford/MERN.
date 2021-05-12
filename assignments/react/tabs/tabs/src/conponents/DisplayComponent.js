@@ -1,9 +1,10 @@
 import React from 'react'
 
-const DisplayComponent = () => {
+const DisplayComponent = props => {
+    const tabName = props.content;
     return (
         <div>
-            <p>This is just filler text for the time being</p>
+            <p> {tabName} </p>
         </div>
     )
 }
