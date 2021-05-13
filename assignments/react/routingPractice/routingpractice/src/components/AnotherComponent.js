@@ -5,12 +5,13 @@ const AnotherComponent = props => {
     const { word } = props;
 
     let context = (
+        
         <p>the word is { word }</p>
     )
 
     return (
         <div>
-            
+            { context }
         </div>
     )
 }
