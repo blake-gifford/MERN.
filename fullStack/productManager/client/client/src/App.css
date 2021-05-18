@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  padding: 25px;
+}
+
+.form{
+  padding: 10px;
 }
 
 .App-logo {
