@@ -2,6 +2,7 @@ import './App.css';
 import ProductData from './components/ProductData';
 import ProductForm from './components/ProductForm';
 import React, { useState } from 'react';
+import { Router } from '@reach/router';
 
 const initialProduct = {
   productTitle: "",
@@ -26,6 +27,9 @@ function App() {
       <ProductForm addProductToProducts={addProductToProducts}  product={product} setProduct={setProduct} />
       <hr/>
       <ProductData products={products} setProducts={setProducts}/>
+      <Router>
+        {/* <OneProduct path="/product/:id" /> */}
+      </Router>
     </div>
   );
 }
