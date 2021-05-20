@@ -1,8 +1,10 @@
 import './App.css';
-import ProductData from './components/ProductData';
-import ProductForm from './components/ProductForm';
 import React, { useState } from 'react';
 import { Router } from '@reach/router';
+import ProductData from './components/ProductData';
+import ProductForm from './components/ProductForm';
+import OneProduct from './components/OneProduct';
+import EditProduct from './components/EditProduct';
 
 const initialProduct = {
   productTitle: "",
@@ -24,11 +26,11 @@ function App() {
   return (
     <div className="App">
       <h2>Welcome to Product Manager!</h2>
-      <ProductForm addProductToProducts={addProductToProducts}  product={product} setProduct={setProduct} />
-      <hr/>
-      <ProductData products={products} setProducts={setProducts}/>
       <Router>
-        {/* <OneProduct path="/product/:id" /> */}
+      <ProductForm path="/new" addProductToProducts={addProductToProducts}  product={product} setProduct={setProduct} />
+      <EditProduct path="/edit"/>
+      <ProductData path="/" products={products} setProducts={setProducts}/>
+        <OneProduct path="/product/:id" products={products} setProducts={setProducts}/>
       </Router>
     </div>
   );

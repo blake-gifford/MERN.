@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import {Link} from '@reach/router'
 
-
-const ProductForm = props => {
+const EditProduct = props => {
+    const { id } = props;
     const [productTitle, setProductTitle] = useState('')
     const [productPrice, setProductPrice] = useState('')
     const [productDescription, setProductDescription] = useState('')
 
 
-    // const [product, setProduct ] = useState({
-    //     productTitle: "",
-    //     productPrice: "",
-    //     productDescription: ""
-    // })
+
+    //res.data.results.productTitle
+    //set it equal
 
     const submitHandler = e => {
         e.preventDefault();
@@ -24,21 +21,14 @@ const ProductForm = props => {
             productDescription: productDescription
         }
 
-        axios.post('http://localhost:8000/api/product', product)
+        axios.put(`http://localhost:8000/api/product/${id}/update`, product)
         .then(res => console.log("Response: ", res))
         .catch(err => console.log(err))
     }
 
-    // const cancelHandler
-
-    // const changeHandler = e => {
-    //     setProduct{
-    //     }
-    //     setProduct({...product})
-    // }
-
     return (
         <form onSubmit={ submitHandler }>
+            <h4>Edit Product!</h4>
             <div className="form">
                 <label htmlFor="productTitle">Product Title</label>
                 <input type="text" name="productTitle" onChange={ ( e ) => setProductTitle(e.target.value) }/>
@@ -52,11 +42,10 @@ const ProductForm = props => {
                 <input type="text" name="productDescription" onChange={ ( e ) => setProductDescription(e.target.value) }/>
             </div>
             <div className="form">
-                <input type="submit" value="Submit"/>
-                <button><Link to={'/'}>Cancel</Link></button>
+                <input type="submit" value="Update"/>
             </div>
         </form>
     )
 }
 
-export default ProductForm
+export default EditProduct

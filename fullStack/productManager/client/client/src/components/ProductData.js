@@ -10,7 +10,7 @@ const ProductData = props => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/getproduct')
             .then(response => {
-                setProducts(response.data.data)
+                setProducts(response.data.results)
             })
             .catch(err => console.log(err));
     }, [products])
@@ -18,7 +18,7 @@ const ProductData = props => {
 
     return (
         <>    
-            
+
                 <h1>All Products</h1>
                 {
                     products.map((product, i) =>
@@ -27,6 +27,7 @@ const ProductData = props => {
                         </div>
                     )
                 }
+                <button><Link to={'/new'}>Create</Link></button>
 
         </>
     )
