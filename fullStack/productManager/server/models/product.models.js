@@ -1,28 +1,28 @@
 const mongoose = require('mongoose');
 
-const isString = v => v === ""
-const isWholeNumber = v => v === Math.floor(v)
+// const isString = v => v === ""
+// const isWholeNumber = v => v === Math.floor(v)
 
 const ProductSchema = new mongoose.Schema({
     productTitle: {
-        type: [String, "You have Failed me by not putting in the correct data type."],
-        minlength: [255, "The max number of charectors allowed is 255."],
+        type: String,
+        maxlength: [255, "The max number of charectors allowed is 255."],
         requires: [true, "You must Put a title."],
-        validate: {
-            validator: isString,
-            message: props =>  `This must be less than 255 charectors. You entered ${props.value}.`
-        }
+        // validate: {
+        //     validator: isString,
+        //     message: props =>  `This must be less than 255 charectors. You entered ${props.value}.`
+        // }
     },
     productPrice: {
-        type: [Number, "You must enter a number."],
+        type: Number,
         requires: [true, "You must enter in a price."],
-        validate: {
-            validator: isWholeNumber,
-            message: prop => "This must be a number"
-        }
+        // validate: {
+        //     validator: isWholeNumber,
+        //     message: prop => "This must be a number"
+        // }
     },
     productDescription: {
-        type: [String, "You must enter a description."],
+        type: String,
         requires: [true, "you must enter something."]
     }
 }, {timestamp: true });

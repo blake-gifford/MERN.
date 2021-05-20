@@ -13,6 +13,7 @@ module.exports = {
             .then(response => res.json({ message: "success", data: response}))
             .catch(err => res.json({ message: "error", error: err }))
     },
+    
     //UPDATE
     updateProduct: (req, res) => {
         Product.findByIdAndUpdate({_id: req.params.id }, req.body, { new: true, runValidators: true})

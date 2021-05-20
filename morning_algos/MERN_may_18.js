@@ -30,7 +30,7 @@ const expected1 = [
 function findObjects(criteria, collection){
     // const results = collection.filter(collection => criteria)
     // return results;
-    newArr = [];
+    let newArr = [];
     for (let i = 0; i < collection.length; i++){
         if(collection[i].firstName === criteria.firstName && collection[i].age === criteria.age){
             newArr.push(collection[i]);

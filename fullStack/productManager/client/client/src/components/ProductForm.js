@@ -1,37 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const ProductForm = () => {
+const ProductForm = props => {
     const [productTitle, setProductTitle] = useState('')
     const [productPrice, setProductPrice] = useState('')
     const [productDescription, setProductDescription] = useState('')
 
+    // const [product, setProduct ] = useState({
+    //     productTitle: "",
+    //     productPrice: "",
+    //     productDescription: ""
+    // })
+
     const submitHandler = e => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/product', {
-            productTitle,
-            productPrice,
-            productDescription
-        })
+
+        const product = {
+            productTitle: productTitle,
+            productPrice: productPrice,
+            productDescription: productDescription
+        }
+
+        axios.post('http://localhost:8000/api/product', product)
         .then(res => console.log("Response: ", res))
-        .catch(err => console.log("Error: ", err))
+        .catch(err => console.log(err))
     }
 
-    
+    // const changeHandler = e => {
+    //     setProduct{
+
+    //     }
+    //     setProduct({...product})
+    // }
 
     return (
         <form onSubmit={ submitHandler }>
             <div className="form">
-                <label>Product Title</label>
-                <input type="text" name="productTitle" onChange={ e => setProductTitle(e.target.value) }/>
+                <label htmlFor="productTitle">Product Title</label>
+                <input type="text" name="productTitle" onChange={ ( e ) => setProductTitle(e.target.value) }/>
             </div>
             <div className="form">
-                <label>Product Price</label>
-                <input type="text" name="productPrice" onChange={ e => setProductPrice(e.target.value) }/>
+                <label htmlFor="productPrice">Product Price</label>
+                <input type="number" name="productPrice" onChange={ ( e ) => setProductPrice(e.target.value) }/>
             </div>
             <div className="form">
-                <label>Product Description</label>
-                <input type="text" name="productDescription" onChange={ e => setProductDescription(e.target.value) }/>
+                <label htmlFor="productDescription">Product Description</label>
+                <input type="text" name="productDescription" onChange={ ( e ) => setProductDescription(e.target.value) }/>
             </div>
             <div className="form">
                 <input type="submit" value="submit"/>
