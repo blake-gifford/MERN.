@@ -5,10 +5,10 @@ module.exports = app => {
     app.post('/api/author', controller.createAuthor);
     // READ
     app.get('/api/author', controller.getAuthor);
-    app.get('/api/author/:_id', controller.getOneAuthor);
+    app.get('/api/author/:id', controller.getOneAuthor);
     // UPDATE
-    app.put('/api/author/:_id/update', controller.updateAuthor);
+    app.put('/api/author/:id/update', controller.updateAuthor);
     app.put('/api/author/:_id/quote', controller.addQuote);
     // DELETE
-    app.delete('/api/author/:_id/delete', controller.deleteAuthor);
+    app.delete('/api/author/:id/delete', controller.deleteAuthor);
 }

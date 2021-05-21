@@ -4,7 +4,6 @@ import { navigate } from '@reach/router';
 
 const DeleteButton = props => {
     const { id } = props;
-
     const deleteHandler = () => {
         axios.delete(`http://localhost:8000/api/author/${id}/delete`)
             .then(response => navigate('/'))
@@ -12,9 +11,7 @@ const DeleteButton = props => {
     }
 
     return (
-        <div>
-            <input type="button" value="Delete" onClick={ deleteHandler }/>
-        </div>
+            <input type="button" value="Delete" className="col-sm-2" onClick={deleteHandler} />
     )
 }
 

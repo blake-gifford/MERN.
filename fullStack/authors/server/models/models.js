@@ -19,7 +19,7 @@ const mongoose = require('mongoose');
             required: [true, "You must leave a name."],
             minlength: [2, "Your name must be at least 2 characters long."]
         },
-        quote: [QuoteSchema]
+        quotes: [QuoteSchema]
     }, { timestamps: true });
 
     const Author = mongoose.model("Author", AuthorSchema);
