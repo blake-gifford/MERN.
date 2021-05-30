@@ -24,7 +24,7 @@ function canStringBecomePalindrome(str) {
         letterCounts[letter] = letterCounts[letter] || 0;
         letterCounts[letter]++;
     }
-    for(let letterCounts in letterCounts){
+    for(let letterCount in letterCounts){
         palindromeSum += letterCounts[letterCounts] % 2;
     }
     return palindromeSum < 2;
