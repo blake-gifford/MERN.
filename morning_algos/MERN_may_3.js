@@ -68,8 +68,8 @@ function bubbleSort(nums){
 function selectionSort(nums){
     for (var i = 0; i < nums.length; i++){
         var min = nums[i];
-        var minIdx - i;
-        for(var j - i; j < nums.length; j+-1){
+        var minIdx = i;
+        for(var j = i; j < nums.length; j+-1){
             if(nums[j] < min){
                 min = nums[j];
                 minIdx = j;
